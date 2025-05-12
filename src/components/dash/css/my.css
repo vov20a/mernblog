@@ -1,0 +1,112 @@
+.paginationBox {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.page-item {
+  background-color: rgb(255, 255, 255);
+  list-style: none;
+  /* border: 1px solid rgba(0, 0, 0, 0.178); */
+  /* padding: 3px 5px; */
+  transition: all 0.3s;
+  cursor: pointer;
+  font-size: 24px;
+}
+.page-item:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.page-item:last-child {
+  border-radius: 0 5px 5px 0;
+}
+.page-link {
+  text-decoration: none;
+  font: 300 16px 'Roboto';
+  color: rgb(80, 80, 80);
+  transition: all 0.3s;
+}
+
+.page-item:hover {
+  background-color: rgb(230, 230, 230);
+}
+
+.page-item:hover .page-link {
+  color: rgb(0, 0, 0);
+}
+
+/* .pageItemActive {
+  background-color: tomato;
+} */
+
+.pageLinkActive {
+  color: rgb(255, 255, 255);
+  font-weight: 800;
+  background-color: blue;
+}
+/* quill editor */
+.quill {
+  height: 250px;
+}
+.ql-toolbar.ql-snow + .ql-container.ql-snow {
+  height: 210px;
+}
+.quill-reductor {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  color: rgb(13, 14, 14);
+}
+.ql-editor {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+}
+/* text editor */
+.editor-container_classic-editor .editor-container__editor .image.image-style-align-right {
+  float: right;
+}
+.main-container {
+  font-weight: 500;
+}
+.main-sidebar {
+  font-weight: 400;
+}
+.main-footer {
+  font-weight: 400;
+}
+.form-search {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 0;
+}
+.card-comment.active {
+  background-color: #ccc;
+}
+.comment-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.password-avatar {
+  min-width: 140px;
+}
+/*==== adapt==== */
+@media (max-width: 768px) {
+  .blog-area-part h2 {
+    font-size: 28px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .post-info h4 {
+    font-size: 20px;
+  }
+}
