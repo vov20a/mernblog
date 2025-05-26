@@ -83,8 +83,10 @@ const PostCard = () => {
 
   if (isSuccess) {
     let status = '';
-    status = post?.user?.roles.includes('Author') ? 'Author' : 'User';
-    status = post?.user?.roles.includes('Admin') ? 'Admin' : status;
+    status =
+      post?.user?.roles !== undefined && post?.user?.roles.includes('Author') ? 'Author' : 'User';
+    status =
+      post?.user?.roles !== undefined && post?.user?.roles.includes('Admin') ? 'Admin' : status;
 
     content = (
       <section className="content-header">

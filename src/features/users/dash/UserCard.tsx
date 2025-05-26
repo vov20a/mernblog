@@ -97,9 +97,8 @@ const UserCard = () => {
                           </h2>
                           <p className="text-muted text-sm">
                             <b>Roles: </b>
-                            {user.roles.map((role) => (
-                              <span key={role}> {role},</span>
-                            ))}
+                            {user?.roles !== undefined &&
+                              user?.roles.map((role) => <span key={role}> {role},</span>)}
                           </p>
                           <ul className="ml-4 mb-0 fa-ul text-muted">
                             <li className="small">

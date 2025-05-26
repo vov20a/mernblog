@@ -34,7 +34,6 @@ const Chat = () => {
   const [message, setMessage] = useState('');
   const [isOpen, setOpen] = useState(false);
   const [users, setUsers] = useState<IUsers[]>([]);
-  // const [joinEv, setJoinEv] = useState<Socket<DefaultEventsMap, DefaultEventsMap> | null>(null);
 
   useEffect(() => {
     //get obj from search-string

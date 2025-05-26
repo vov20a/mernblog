@@ -122,7 +122,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         username: string;
         email: string;
         password: string;
-        roles: ('User' | 'Author' | 'Admin' | undefined)[];
+        roles: ('User' | 'Author' | 'Admin')[] | undefined;
         avatar: string | ArrayBuffer | null;
       }
     >({
@@ -143,7 +143,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         username: string | undefined;
         email: string | undefined;
         password?: string | undefined;
-        roles: ('User' | 'Author' | 'Admin' | undefined)[];
+        roles: ('User' | 'Author' | 'Admin')[] | undefined;
         avatar?: string | ArrayBuffer | null;
       }
     >({

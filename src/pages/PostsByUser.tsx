@@ -133,7 +133,7 @@ const PostsByUser = () => {
                           <span className="fa-li">
                             <i className="fa fa-registered"></i>
                           </span>
-                          {user ? (
+                          {user?.roles !== undefined ? (
                             user?.roles.map((role) => <span key={role}> {role},</span>)
                           ) : (
                             <></>

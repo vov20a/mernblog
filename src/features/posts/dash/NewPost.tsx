@@ -43,7 +43,10 @@ const NewPost = () => {
   let usersOptions: ReactElement[] = [];
   if (users?.length) {
     users.map((user) => {
-      if (user.roles.includes('Author') || user.roles.includes('Admin')) {
+      if (
+        (user?.roles !== undefined && user.roles.includes('Author')) ||
+        (user?.roles !== undefined && user.roles.includes('Admin'))
+      ) {
         usersOptions.push(
           <option key={user.id} value={user.id}>
             {user.username}

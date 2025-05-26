@@ -23,8 +23,8 @@ const DashUser = ({ user, number, page, currentUserId, onDeleteUserClicked }: Us
   });
 
   let status = '';
-  status = user?.roles.includes('Author') ? 'Author' : 'User';
-  status = user?.roles.includes('Admin') ? 'Admin' : status;
+  status = user?.roles !== undefined && user?.roles.includes('Author') ? 'Author' : 'User';
+  status = user?.roles !== undefined && user?.roles.includes('Admin') ? 'Admin' : status;
 
   const onDeleteUser = () => {
     setShow(true);

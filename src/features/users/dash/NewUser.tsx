@@ -5,6 +5,7 @@ import useTitle from '../../../hooks/useTitle';
 import SelectedRoles from '../../../components/dash/SelectedRoles';
 import { PulseLoader } from 'react-spinners';
 import { useCreateAndRemoveToast } from '../../../hooks/useCreateAndRemoveToast';
+import { IOption } from '../../../types/IOption';
 
 const USER_REGEX = /^[A-zА-я0-9\s?]{3,20}$/;
 const EMAIL_REGEX = /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -25,7 +26,7 @@ const NewUser = () => {
   const [validEmail, setValidEmail] = useState(false);
   const [password, setPassword] = useState('');
   const [validPassword, setValidPassword] = useState(false);
-  const [roles, setRoles] = useState<('User' | 'Author' | 'Admin' | undefined)[]>([]);
+  const [roles, setRoles] = useState<IOption[]>([]);
   const [avatar, setAvatar] = React.useState<string | ArrayBuffer | null>(null);
 
   useEffect(() => {
@@ -77,13 +78,19 @@ const NewUser = () => {
   const onPasswordChanged = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 
   const canSave =
-    [roles.length, validUsername, validEmail, validPassword].every(Boolean) && !isLoading;
+    [roles?.length, validUsername, validEmail, validPassword].every(Boolean) && !isLoading;
 
   const onSaveUserClicked = async (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (canSave) {
       // console.log({ username, email, password, roles, avatar });
-      await addNewUser({ username, email, password, roles, avatar: avatar ?? null });
+      await addNewUser({
+        username,
+        email,
+        password,
+        roles: roles ?? undefined,
+        avatar: avatar ?? null,
+      });
     }
   };
 
@@ -91,7 +98,7 @@ const NewUser = () => {
   const validUserClass = !validUsername ? 'form__input--incomplete' : '';
   const validEmailClass = !validEmail ? 'form__input--incomplete' : '';
   const validPwdClass = !validPassword ? 'form__input--incomplete' : '';
-  const validRolesClass = !Boolean(roles.length) ? 'form__input--incomplete' : '';
+  const validRolesClass = !Boolean(roles?.length) ? 'form__input--incomplete' : '';
   // const validAvatarClass = !Boolean(avatar) ? 'form__input--incomplete' : '';
 
   const handleDeleteFile = () => {
@@ -163,13 +170,8 @@ const NewUser = () => {
             </div>
             <div className="form-group" style={{ zIndex: 1000, position: 'relative' }}>
               <label htmlFor="roles">Roles(only one)</label>
-              <SelectedRoles
-                validRolesClass={validRolesClass}
-                selectredRoles={roles}
-                onChangeValue={setRoles}
-              />
+              <SelectedRoles validRolesClass={validRolesClass} onChangeValue={setRoles} />
             </div>
-
             <div className="form-group">
               <label htmlFor="exampleInputFile">Avatar</label>
               <div className={`input-group `}>

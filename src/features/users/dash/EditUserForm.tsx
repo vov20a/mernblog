@@ -6,6 +6,7 @@ import SelectedRoles from '../../../components/dash/SelectedRoles';
 import { Link, useNavigate } from 'react-router-dom';
 import { PulseLoader } from 'react-spinners';
 import { useCreateAndRemoveToast } from '../../../hooks/useCreateAndRemoveToast';
+import { IOption } from '../../../types/IOption';
 
 interface EditUserProps {
   user: IUser;
@@ -30,7 +31,7 @@ const EditUserForm = ({ user }: EditUserProps) => {
   const [validEmail, setValidEmail] = useState(false);
   const [password, setPassword] = useState('');
   const [validPassword, setValidPassword] = useState(false);
-  const [roles, setRoles] = useState<('User' | 'Author' | 'Admin' | undefined)[]>(user.roles);
+  const [roles, setRoles] = useState<IOption[]>(user.roles);
   const [avatar, setAvatar] = React.useState<string | ArrayBuffer | null>(null);
   const [oldAvatar, setOldAvatar] = useState<string | undefined>(user?.avatar?.url);
 
@@ -106,7 +107,7 @@ const EditUserForm = ({ user }: EditUserProps) => {
   const onPasswordChanged = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 
   const canSave =
-    [roles.length, validUsername, validEmail].every(Boolean) &&
+    [roles?.length, validUsername, validEmail].every(Boolean) &&
     (avatar !== null || oldAvatar !== undefined) &&
     !isLoading;
 
@@ -120,7 +121,7 @@ const EditUserForm = ({ user }: EditUserProps) => {
         username,
         email,
         password: password ?? undefined,
-        roles,
+        roles: roles ?? undefined,
         avatar: avatar ?? null,
       });
     }
@@ -130,7 +131,7 @@ const EditUserForm = ({ user }: EditUserProps) => {
   const validUserClass = !validUsername ? 'form__input--incomplete' : '';
   const validEmailClass = !validEmail ? 'form__input--incomplete' : '';
   const validPwdClass = !validPassword ? 'form__input--incomplete' : '';
-  const validRolesClass = !Boolean(roles.length) ? 'form__input--incomplete' : '';
+  const validRolesClass = !Boolean(roles?.length) ? 'form__input--incomplete' : '';
   const validAvatarClass =
     avatar === null && oldAvatar === undefined ? 'form__input--incomplete' : '';
 
@@ -202,7 +203,7 @@ const EditUserForm = ({ user }: EditUserProps) => {
               />
             </div>
             <div className="form-group" style={{ zIndex: 1000, position: 'relative' }}>
-              <label htmlFor="roles">Roles(only one)</label>
+              <label htmlFor="roles">Roles (only one)</label>
               <SelectedRoles
                 validRolesClass={validRolesClass}
                 selectredRoles={roles}
