@@ -12291,6 +12291,12 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
   /* top: 0.7rem; */
   top: 10.8rem;
 }
+.nav-sidebar .nav-link > p > .right.videos {
+  position: absolute;
+  right: 1rem;
+  /* top: 0.7rem; */
+  top: 13.4rem;
+}
 .nav-sidebar .nav-link > p > .right.posts.user-active {
   position: absolute;
   right: 1rem;
@@ -12317,6 +12323,15 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
   right: 1rem;
   /* top: 0.7rem; */
   top: 16.2rem;
+}
+.nav-sidebar .nav-link > p > .right.videos.user-active,
+.nav-sidebar .nav-link > p > .right.videos.post-active,
+.nav-sidebar .nav-link > p > .right.videos.category-active,
+.nav-sidebar .nav-link > p > .right.videos.comment-active {
+  position: absolute;
+  right: 1rem;
+  /* top: 0.7rem; */
+  top: 18.7rem;
 }
 /* .nav-sidebar .nav-link > p > .right.categories.user-active.post-active {
   position: absolute;

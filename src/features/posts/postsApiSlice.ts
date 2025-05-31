@@ -117,7 +117,7 @@ export const postsApiSlice = apiSlice.injectEndpoints({
           return response.status === 200 && !result.isError;
         },
       }),
-      keepUnusedDataFor: 5,
+      keepUnusedDataFor: 3,
       transformResponse: (responseData: IAllPostsEnter): IAllPosts => {
         const loadedPosts = responseData?.posts.map((post: IPostType) => {
           post.id = post._id;

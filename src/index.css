@@ -1577,6 +1577,23 @@ section.blog-post-area h4 span.author-name {
   padding: 5px 15px;
   border-radius: 10px;
 }
+/* =============videos====== */
+.videos-breadcrumbs {
+  display: flex;
+  align-items: center;
+}
+.videos-span {
+  font-weight: 300;
+}
+.videos-list {
+  list-style: none;
+}
+.videos-link {
+  display: flex;
+}
+.videos-item {
+  padding-left: 10px;
+}
 /* ==========adapt================ */
 @media (max-width: 1200px) {
   .wrapper section.bg-text-area .bg-text {

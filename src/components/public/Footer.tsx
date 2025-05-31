@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Container, Col } from 'react-bootstrap';
 import { FiFacebook } from 'react-icons/fi';
-import { FaAlignJustify, FaTwitter } from 'react-icons/fa';
-import { FaLinkedinIn } from 'react-icons/fa';
-import { FaDribbble } from 'react-icons/fa';
+import { FaAlignJustify, FaTwitter, FaLinkedinIn, FaVideo } from 'react-icons/fa';
 import { useGetCategoriesQuery } from '../../features/categories/categoriesApiSlice';
 import { useCreateCategoryArray } from '../../hooks/createCategoryArray';
 import { useRef, useState } from 'react';
@@ -71,8 +69,8 @@ const Footer = () => {
               <Link to="#">
                 <FaLinkedinIn style={{ fontSize: 25, fill: '#fff', strokeWidth: 0 }} />
               </Link>
-              <Link to="#">
-                <FaDribbble style={{ fontSize: 25, fill: '#fff', strokeWidth: 0 }} />
+              <Link to="/videos">
+                <FaVideo style={{ fontSize: 25, fill: '#fff', strokeWidth: 0 }} />
               </Link>
             </div>
           </div>

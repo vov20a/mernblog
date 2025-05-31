@@ -61,6 +61,7 @@ const HeaderMenu = ({ catsArray, setActiveIdFirst, activeIdFirst, setOpenBurger 
       pathname.includes('search') ||
       pathname.includes('tag') ||
       pathname.includes('mainchat') ||
+      pathname.includes('videos') ||
       pathname.includes('account')
     ) {
       setCurrentItemId('');

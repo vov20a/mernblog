@@ -8,6 +8,7 @@ import { useGetCategoriesQuery } from '../../features/categories/categoriesApiSl
 import { useGetCommentsQuery } from '../../features/comments/commentsApiSlice';
 import { useEffect, useState } from 'react';
 import { IComment } from '../../types/IComment';
+import { useGetVideosQuery } from '../../features/videos/videosApiSlice';
 
 const Main = () => {
   useTitle('Admin Page');
@@ -73,6 +74,17 @@ const Main = () => {
     }),
   });
 
+  const { countVideos, isSuccessVideos, isLoadingVideo, isErrorVideo, errorVideo } =
+    useGetVideosQuery('videosList', {
+      selectFromResult: ({ data, isSuccess, isLoading, isError, error }) => ({
+        countVideos: data?.videosCount,
+        isSuccessVideos: isSuccess,
+        isLoadingVideo: isLoading,
+        isErrorVideo: isError,
+        errorVideo: error,
+      }),
+    });
+
   const location = useLocation();
   //from DelUser
   useCreateAndRemoveToast(
@@ -97,6 +109,18 @@ const Main = () => {
   useCreateAndRemoveToast(
     location.state?.successDelPost,
     location.state?.messageDelPost ?? 'Post deleted',
+    'success',
+  );
+  //from NewVideo
+  useCreateAndRemoveToast(
+    location.state?.successNewVideo,
+    location.state?.messageNewVideo ?? 'Video created',
+    'success',
+  );
+  //from DelVideo
+  useCreateAndRemoveToast(
+    location.state?.successDelVideo,
+    location.state?.messageDelVideo ?? 'Video deleted',
     'success',
   );
   //from DelComment
@@ -162,6 +186,23 @@ const Main = () => {
     );
   }
 
+  let videosContent;
+
+  if (isLoadingVideo) videosContent = <PulseLoader color={'#000'} />;
+
+  if (isErrorVideo) {
+    videosContent = <p className="errmsg">{errorVideo?.data?.message}</p>;
+  }
+
+  if (isSuccessVideos) {
+    videosContent = (
+      <div className="inner">
+        <h3>{countVideos ?? 0}</h3>
+        <p>Videos</p>
+      </div>
+    );
+  }
+
   let categoriesContent = <></>;
 
   if (isLoadingCategories) categoriesContent = <PulseLoader color={'#000'} />;
@@ -195,6 +236,11 @@ const Main = () => {
     );
   }
   useCreateAndRemoveToast(isErrorPost, errorPost?.data?.message || 'Server Error Posts', 'error');
+  useCreateAndRemoveToast(
+    isErrorVideo,
+    errorVideo?.data?.message || 'Server Error Videos',
+    'error',
+  );
   useCreateAndRemoveToast(isErrorUser, errorUser?.data?.message || 'Server Error User', 'error');
   useCreateAndRemoveToast(
     isErrorCategories,
@@ -272,6 +318,19 @@ const Main = () => {
               <div className="">{commErrContent}</div>
             </>
           )}
+          <div className="col-lg-3 col-6">
+            <div className="small-box bg-primary">
+              <div className="inner">
+                {videosContent}
+                <div className="icon">
+                  <i className="fas fa-video"></i>
+                </div>
+              </div>
+              <Link to="/dash/videos" className="small-box-footer">
+                More info <i className="fas fa-arrow-circle-right"></i>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </>

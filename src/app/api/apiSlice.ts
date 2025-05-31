@@ -48,9 +48,9 @@ export const apiSlice = createApi<
   (args: any, api: any, extraOptions: any) => Promise<any>,
   {},
   'api',
-  'User' | 'Post' | 'Category' | 'Comment' | 'Mail'
+  'User' | 'Post' | 'Category' | 'Comment' | 'Mail' | 'Video'
 >({
   baseQuery: baseQueryWithReauth,
-  tagTypes: ['User', 'Post', 'Category', 'Comment', 'Mail'],
+  tagTypes: ['User', 'Post', 'Category', 'Comment', 'Mail', 'Video'],
   endpoints: (builder) => ({}),
 });

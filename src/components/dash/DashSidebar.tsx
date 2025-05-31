@@ -30,15 +30,21 @@ interface IFunc {
   activeMenuComments1: boolean;
   activeMenuComments2: boolean;
   //
+  openMenuVideos: boolean;
+  activeMenuVideos1: boolean;
+  activeMenuVideos2: boolean;
+  //
   onClickOpenMenuUsers: () => void;
   onClickOpenMenuPosts: () => void;
   onClickOpenMenuCategories: () => void;
   onClickOpenMenuComments: () => void;
+  onClickOpenMenuVideos: () => void;
   //
   onClickUsersItem: (e: React.MouseEvent<HTMLLIElement>, num: number) => void;
   onClickPostsItem: (e: React.MouseEvent<HTMLLIElement>, num: number) => void;
   onClickCategoriesItem: (e: React.MouseEvent<HTMLLIElement>, num: number) => void;
   onClickCommentsItem: (e: React.MouseEvent<HTMLLIElement>, num: number) => void;
+  onClickVideosItem: (e: React.MouseEvent<HTMLLIElement>, num: number) => void;
 }
 
 const DashSidebar = ({ closeBar, windowLess768, setCloseBar }: SidebarProps) => {
@@ -65,15 +71,21 @@ const DashSidebar = ({ closeBar, windowLess768, setCloseBar }: SidebarProps) => 
     activeMenuComments1,
     activeMenuComments2,
     //
+    openMenuVideos,
+    activeMenuVideos1,
+    activeMenuVideos2,
+    //
     onClickOpenMenuUsers,
     onClickOpenMenuPosts,
     onClickOpenMenuCategories,
     onClickOpenMenuComments,
+    onClickOpenMenuVideos,
     //
     onClickUsersItem,
     onClickPostsItem,
     onClickCategoriesItem,
     onClickCommentsItem,
+    onClickVideosItem,
   }: IFunc = useOpenDashMenu();
 
   return (
@@ -292,6 +304,45 @@ const DashSidebar = ({ closeBar, windowLess768, setCloseBar }: SidebarProps) => 
                   >
                     <i className="far fa-circle nav-icon"></i>
                     <p>NewComment</p>
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            <li
+              onClick={onClickOpenMenuVideos}
+              className={`nav-item has-treeview` + openMenuVideos ? ' open-menu' : ''}
+            >
+              <Link to="#" className={`nav-link  ${openMenuVideos ? ' active' : ''}`}>
+                <i className="nav-icon fas fa-video"></i>
+                <p>
+                  VIDEOS
+                  <i
+                    className={`right fas fa-angle-left videos ${openMenuVideos ? ' rotate' : ''} ${
+                      openMenuUsers ? ' user-active' : ''
+                    }  ${openMenuPosts ? ' post-active' : ''} ${
+                      openMenuCategories ? ' category-active' : ''
+                    } ${openMenuComments ? ' comment-active' : ''}
+                    `}
+                  ></i>
+                </p>
+              </Link>
+              <ul className="nav nav-treeview" style={openMenuVideos ? { display: 'block' } : {}}>
+                <li className="nav-item" onClick={(e) => onClickVideosItem(e, 1)}>
+                  <Link
+                    to="/dash/videos"
+                    className={`nav-link  ${activeMenuVideos1 ? ' active' : ''}`}
+                  >
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>VideosList</p>
+                  </Link>
+                </li>
+                <li className="nav-item" onClick={(e) => onClickVideosItem(e, 2)}>
+                  <Link
+                    to="/dash/videos/new"
+                    className={`nav-link  ${activeMenuVideos2 ? ' active' : ''}`}
+                  >
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>NewVideo</p>
                   </Link>
                 </li>
               </ul>

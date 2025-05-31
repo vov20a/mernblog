@@ -23,6 +23,10 @@ export const useOpenDashMenu = () => {
   const [activeMenuComments1, setActiveMenuComments1] = useState<boolean>(false);
   const [activeMenuComments2, setActiveMenuComments2] = useState<boolean>(false);
 
+  const [openMenuVideos, setOpenMenuVideos] = useState<boolean>(false);
+  const [activeMenuVideos1, setActiveMenuVideos1] = useState<boolean>(false);
+  const [activeMenuVideos2, setActiveMenuVideos2] = useState<boolean>(false);
+
   const onClickOpenMenuUsers = (): void => {
     setOpenMenuUsers((prev) => !prev);
     setOpenSingleMenu(false);
@@ -34,6 +38,8 @@ export const useOpenDashMenu = () => {
     setActiveMenuCategories2(false);
     setActiveMenuComments1(false);
     setActiveMenuComments2(false);
+    setActiveMenuVideos1(false);
+    setActiveMenuVideos2(false);
     navigate('/dash/users');
   };
 
@@ -48,6 +54,8 @@ export const useOpenDashMenu = () => {
     setActiveMenuCategories2(false);
     setActiveMenuComments1(false);
     setActiveMenuComments2(false);
+    setActiveMenuVideos1(false);
+    setActiveMenuVideos2(false);
     navigate('/dash/posts');
   };
   const onClickOpenMenuCategories = (): void => {
@@ -61,6 +69,8 @@ export const useOpenDashMenu = () => {
     setActiveMenuCategories2(false);
     setActiveMenuComments1(false);
     setActiveMenuComments2(false);
+    setActiveMenuVideos1(false);
+    setActiveMenuVideos2(false);
     navigate('/dash/categories');
   };
   const onClickOpenMenuComments = (): void => {
@@ -74,7 +84,25 @@ export const useOpenDashMenu = () => {
     setActiveMenuCategories2(false);
     setActiveMenuComments1(false);
     setActiveMenuComments2(false);
+    setActiveMenuVideos1(false);
+    setActiveMenuVideos2(false);
     navigate('/dash/comments');
+  };
+
+  const onClickOpenMenuVideos = (): void => {
+    setOpenMenuVideos((prev) => !prev);
+    setOpenSingleMenu(false);
+    setActiveMenuPosts1(false);
+    setActiveMenuPosts2(false);
+    setActiveMenuUsers1(false);
+    setActiveMenuUsers2(false);
+    setActiveMenuCategories1(false);
+    setActiveMenuCategories2(false);
+    setActiveMenuComments1(false);
+    setActiveMenuComments2(false);
+    setActiveMenuVideos1(false);
+    setActiveMenuVideos2(false);
+    navigate('/dash/videos');
   };
 
   const onClickUsersItem = (e: React.MouseEvent<HTMLLIElement>, num: number): void => {
@@ -90,6 +118,8 @@ export const useOpenDashMenu = () => {
       setActiveMenuCategories2(false);
       setActiveMenuComments1(false);
       setActiveMenuComments2(false);
+      setActiveMenuVideos1(false);
+      setActiveMenuVideos2(false);
     }
     if (num === 2) {
       setOpenMenuPosts(false);
@@ -102,6 +132,8 @@ export const useOpenDashMenu = () => {
       setActiveMenuCategories2(false);
       setActiveMenuComments1(false);
       setActiveMenuComments2(false);
+      setActiveMenuVideos1(false);
+      setActiveMenuVideos2(false);
     }
   };
   const onClickPostsItem = (e: React.MouseEvent<HTMLLIElement>, num: number): void => {
@@ -117,6 +149,8 @@ export const useOpenDashMenu = () => {
       setActiveMenuCategories2(false);
       setActiveMenuComments1(false);
       setActiveMenuComments2(false);
+      setActiveMenuVideos1(false);
+      setActiveMenuVideos2(false);
     }
     if (num === 2) {
       setOpenMenuUsers(false);
@@ -129,6 +163,8 @@ export const useOpenDashMenu = () => {
       setActiveMenuCategories2(false);
       setActiveMenuComments1(false);
       setActiveMenuComments2(false);
+      setActiveMenuVideos1(false);
+      setActiveMenuVideos2(false);
     }
   };
 
@@ -145,6 +181,8 @@ export const useOpenDashMenu = () => {
       setActiveMenuCategories2(false);
       setActiveMenuComments1(false);
       setActiveMenuComments2(false);
+      setActiveMenuVideos1(false);
+      setActiveMenuVideos2(false);
     }
     if (num === 2) {
       setOpenMenuUsers(false);
@@ -157,6 +195,8 @@ export const useOpenDashMenu = () => {
       setActiveMenuCategories1(false);
       setActiveMenuComments1(false);
       setActiveMenuComments2(false);
+      setActiveMenuVideos1(false);
+      setActiveMenuVideos2(false);
     }
   };
 
@@ -173,6 +213,8 @@ export const useOpenDashMenu = () => {
       setActiveMenuCategories2(false);
       setActiveMenuCategories1(false);
       setActiveMenuComments2(false);
+      setActiveMenuVideos1(false);
+      setActiveMenuVideos2(false);
     }
     if (num === 2) {
       setOpenMenuUsers(false);
@@ -185,6 +227,40 @@ export const useOpenDashMenu = () => {
       setActiveMenuCategories1(false);
       setActiveMenuCategories2(false);
       setActiveMenuComments1(false);
+      setActiveMenuVideos1(false);
+      setActiveMenuVideos2(false);
+    }
+  };
+
+  const onClickVideosItem = (e: React.MouseEvent<HTMLLIElement>, num: number): void => {
+    e.stopPropagation();
+    if (num === 1) {
+      setOpenMenuUsers(false);
+      setOpenMenuPosts(false);
+      setActiveMenuPosts1(false);
+      setActiveMenuPosts2(false);
+      setActiveMenuUsers1(false);
+      setActiveMenuUsers2(false);
+      setActiveMenuCategories2(false);
+      setActiveMenuCategories1(false);
+      setActiveMenuComments2(false);
+      setActiveMenuComments1(false);
+      setActiveMenuVideos1((prev) => !prev);
+      setActiveMenuVideos2(false);
+    }
+    if (num === 2) {
+      setOpenMenuUsers(false);
+      setOpenMenuPosts(false);
+      setActiveMenuPosts1(false);
+      setActiveMenuPosts2(false);
+      setActiveMenuUsers1(false);
+      setActiveMenuUsers2(false);
+      setActiveMenuCategories1(false);
+      setActiveMenuCategories2(false);
+      setActiveMenuComments1(false);
+      setActiveMenuComments2(false);
+      setActiveMenuVideos1(false);
+      setActiveMenuVideos2((prev) => !prev);
     }
   };
 
@@ -194,6 +270,7 @@ export const useOpenDashMenu = () => {
     setOpenMenuPosts(false);
     setOpenMenuCategories(false);
     setOpenMenuComments(false);
+    setOpenMenuVideos(false);
   };
 
   useEffect(() => {
@@ -203,6 +280,7 @@ export const useOpenDashMenu = () => {
         setOpenMenuPosts(false);
         setOpenMenuCategories(false);
         setOpenMenuComments(false);
+        setOpenMenuVideos(false);
         setOpenSingleMenu(true);
         break;
       case '/dash/users':
@@ -212,6 +290,7 @@ export const useOpenDashMenu = () => {
         setOpenMenuCategories(false);
         setOpenMenuPosts(false);
         setOpenMenuComments(false);
+        setOpenMenuVideos(false);
         setOpenSingleMenu(false);
         break;
       case '/dash/posts':
@@ -221,6 +300,7 @@ export const useOpenDashMenu = () => {
         setOpenMenuCategories(false);
         setOpenMenuUsers(false);
         setOpenMenuComments(false);
+        setOpenMenuVideos(false);
         setOpenSingleMenu(false);
         break;
       case '/dash/categories':
@@ -230,6 +310,7 @@ export const useOpenDashMenu = () => {
         setOpenMenuPosts(false);
         setOpenMenuUsers(false);
         setOpenMenuComments(false);
+        setOpenMenuVideos(false);
         setOpenSingleMenu(false);
         break;
       case '/dash/comments':
@@ -239,16 +320,29 @@ export const useOpenDashMenu = () => {
         setOpenMenuPosts(false);
         setOpenMenuUsers(false);
         setOpenMenuCategories(false);
+        setOpenMenuVideos(false);
+        setOpenSingleMenu(false);
+        break;
+      case '/dash/videos':
+        setOpenMenuVideos(true);
+        setActiveMenuVideos1(true);
+        setActiveMenuVideos2(false);
+        setOpenMenuPosts(false);
+        setOpenMenuUsers(false);
+        setOpenMenuCategories(false);
+        setOpenMenuComments(false);
         setOpenSingleMenu(false);
         break;
       case '/dash/users/search':
       case '/dash/posts/search':
       case '/dash/categories/search':
       case '/dash/comments/search':
+      case '/dash/videos/search':
         setOpenMenuUsers(false);
         setOpenMenuCategories(false);
         setOpenMenuPosts(false);
         setOpenMenuComments(false);
+        setOpenMenuVideos(false);
         setOpenSingleMenu(false);
         break;
     }
@@ -263,6 +357,8 @@ export const useOpenDashMenu = () => {
     setActiveMenuCategories1,
     setOpenMenuComments,
     setActiveMenuComments1,
+    setOpenMenuVideos,
+    setActiveMenuVideos1,
   ]);
 
   return {
@@ -280,13 +376,18 @@ export const useOpenDashMenu = () => {
     openMenuComments,
     activeMenuComments1,
     activeMenuComments2,
+    openMenuVideos,
+    activeMenuVideos1,
+    activeMenuVideos2,
     onClickOpenMenuUsers,
     onClickOpenMenuPosts,
     onClickOpenMenuCategories,
     onClickOpenMenuComments,
+    onClickOpenMenuVideos,
     onClickUsersItem,
     onClickPostsItem,
     onClickCategoriesItem,
     onClickCommentsItem,
+    onClickVideosItem,
   };
 };

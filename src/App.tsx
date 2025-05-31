@@ -5,6 +5,7 @@ import Layout from './components/public/Layout';
 
 import { ROLES } from './config/roles';
 import { ActiveMenuContext } from './context';
+import VideosItem from './features/videos/VideosItem';
 
 const PersistLogin = lazy(() => import('./features/auth/PersistLogin'));
 const RequireAuth = lazy(() => import('./features/auth/RequireAuth'));
@@ -35,6 +36,7 @@ const CommentsList = lazy(() => import('./features/comments/dash/CommentsList'))
 const NewComment = lazy(() => import('./features/comments/dash/NewComment'));
 const EditComment = lazy(() => import('./features/comments/dash/EditComment'));
 const DashSearchComment = lazy(() => import('./features/comments/dash/DashSearchComment'));
+const DashSearchVideos = lazy(() => import('./features/videos/dash/DashSearch'));
 const CommentsByPostId = lazy(() => import('./features/comments/dash/CommentsByPostId'));
 const CommentView = lazy(() => import('./features/comments/dash/CommentView'));
 const AccountPage = lazy(() => import('./pages/AccountPage'));
@@ -55,6 +57,10 @@ const CreateNewPassword = lazy(() => import('./features/users/CreateNewPassword'
 const CreateNewAvatar = lazy(() => import('./features/users/CreateNewAvatar'));
 const MainChat = lazy(() => import('./components/chat/Main'));
 const Chat = lazy(() => import('./components/chat/Chat'));
+const VideosList = lazy(() => import('./features/videos/dash/VideosList'));
+const NewVideo = lazy(() => import('./features/videos/dash/NewVideo'));
+const EditVideo = lazy(() => import('./features/videos/dash/EditVideo'));
+const Videos = lazy(() => import('./features/videos/VideosList'));
 
 function App() {
   const [activeMenuId, setActiveMenuId] = useState<string>();
@@ -111,6 +117,11 @@ function App() {
                   <Route path="/mainchat" element={<MainChat />} />
                   <Route path="/chat" element={<Chat />} />
 
+                  <Route element={<RequireAuth allowedRoles={[ROLES.Admin, ROLES.Author]} />}>
+                    <Route path="/videos" element={<Videos />} />
+                    <Route path="/videos/:id" element={<VideosItem />} />
+                  </Route>
+
                   {/*private routes start /dash for Admin*/}
                   <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
                     <Route path="dash" element={<DashLayout />}>
@@ -147,6 +158,15 @@ function App() {
                         <Route path="edit/:id" element={<EditComment />} />
                         <Route path="post/:id" element={<CommentsByPostId />} />
                         <Route path="view/:id" element={<CommentView />} />
+                      </Route>
+
+                      <Route path="videos">
+                        <Route index element={<VideosList />} />
+                        <Route path="new" element={<NewVideo />} />
+                        <Route path="search" element={<DashSearchVideos />} />
+                        <Route path="edit/:id" element={<EditVideo />} />
+                        {/* <Route path="post/:id" element={<CommentsByPostId />} />
+                        <Route path="view/:id" element={<CommentView />} /> */}
                       </Route>
                     </Route>
                   </Route>
